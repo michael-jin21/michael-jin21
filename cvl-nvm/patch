@@ -1,0 +1,31 @@
+diff -Nurbp ../../cvl-fw/ndfw_columbiapark-cpk_baseline/Tools/nvm_parser/modules  ./modules
+--- ../../cvl-fw/ndfw_columbiapark-cpk_baseline/Tools/nvm_parser/modules/factory_settings.py
++++ ./modules/factory_settings.py
+@@ -5,7 +5,6 @@
+ import nvm_log
+ import text_gen
+ from modules import sram
+-from modules.ext_tlv import ModuleExtTlv
+ from modules.module import Module
+ from modules.pfa import ModulePFA
+
+@@ -18,6 +17,7 @@
+         section_name = sram.get_root_word(ModuleFactorySettings.WORD_POINTER)[0]
+         Module.__init__(self, section_name, iter_fs, 'factory_settings_text')
+
++        from modules.ext_tlv import ModuleExtTlv
+         actual_size = iter_fs.read_u32(0)
+         password = iter_fs.read_u16(4)
+         if actual_size == 0xFFFFFFFF or password != 0x2811:
+
+
+
+
+
+
+
+
+
+
+
+
